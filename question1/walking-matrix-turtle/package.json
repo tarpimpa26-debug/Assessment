@@ -1,0 +1,14 @@
+{
+  "name": "walking-matrix-turtle",
+  "version": "1.0.0",
+  "description": "Question 1 - Walking Matrix Turtle Problem",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "problem1": "node src/index.js 1 input1-1.txt",
+    "problem2": "node src/index.js 2 input1-2.txt",
+    "problem3": "node src/index.js 3 input1-3.txt"
+  },
+  "author": "",
+  "license": "ISC"
+}

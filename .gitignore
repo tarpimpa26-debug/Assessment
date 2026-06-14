@@ -1,0 +1,24 @@
+# Dependencies
+node_modules/
+
+# SQLite database files (generated at runtime by `npm run seed` / `npm start`)
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+
+# Build output
+dist/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Environment
+.env
+.env.local
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

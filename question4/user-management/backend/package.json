@@ -1,0 +1,19 @@
+{
+  "name": "user-management-backend",
+  "version": "1.0.0",
+  "description": "REST API for user management (Express + built-in node:sqlite)",
+  "type": "module",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node --experimental-sqlite src/server.js",
+    "dev": "node --experimental-sqlite --watch src/server.js",
+    "seed": "node --experimental-sqlite src/seed.js"
+  },
+  "engines": {
+    "node": ">=22.5"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.0"
+  }
+}
