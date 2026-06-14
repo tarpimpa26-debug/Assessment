@@ -1,0 +1,11 @@
+{
+  "name": "squirrel-tree",
+  "version": "1.0.0",
+  "description": "Question 2 - Squirrel Tree Problem",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js input2.txt"
+  },
+  "author": "",
+  "license": "ISC"
+}
