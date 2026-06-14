@@ -1,7 +1,3 @@
-// src/App.jsx
-// The main screen: search box, user table, edit/delete actions,
-// and pagination. Talks to the backend through the helpers in api.js.
-
 import { useState, useEffect, useCallback } from "react";
 import { listUsers, createUser, updateUser, deleteUser } from "./api.js";
 import UserFormModal from "./UserFormModal.jsx";
@@ -16,13 +12,11 @@ export default function App() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  // Modal state: undefined = closed, null = create, object = edit that user.
   const [modalUser, setModalUser] = useState(undefined);
 
   const totalPages = Math.max(1, Math.ceil(total / PAGE_SIZE));
 
-  // Fetch one page of users. Wrapped in useCallback so it can be a
-  // stable dependency of the effect below.
+
   const load = useCallback(async () => {
     setLoading(true);
     setError("");
@@ -46,7 +40,7 @@ export default function App() {
 
   function onSearchChange(value) {
     setSearch(value);
-    setPage(1); // any new search starts from the first page
+    setPage(1); 
   }
 
   async function handleCreate(payload) {
@@ -66,7 +60,6 @@ export default function App() {
     if (!ok) return;
     try {
       await deleteUser(user.id);
-      // If we just removed the last row on the last page, step back.
       const remaining = total - 1;
       const newTotalPages = Math.max(1, Math.ceil(remaining / PAGE_SIZE));
       if (page > newTotalPages) setPage(newTotalPages);

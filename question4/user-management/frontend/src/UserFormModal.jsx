@@ -1,8 +1,3 @@
-// src/UserFormModal.jsx
-// A modal dialog used for BOTH creating and editing a user.
-// When `user` is null it acts as a "create" form; otherwise it
-// pre-fills the fields and acts as an "edit" form.
-
 import { useState, useEffect } from "react";
 
 const EMPTY = { name: "", age: "", email: "", avatarUrl: "" };
@@ -14,7 +9,6 @@ export default function UserFormModal({ user, onClose, onSubmit }) {
 
   const isEdit = Boolean(user);
 
-  // Load the selected user's data into the form when editing.
   useEffect(() => {
     if (user) {
       setForm({
@@ -33,8 +27,6 @@ export default function UserFormModal({ user, onClose, onSubmit }) {
     setForm((prev) => ({ ...prev, [field]: value }));
   }
 
-  // Client-side checks mirror the server rules so the user gets fast
-  // feedback. The server still validates again as the source of truth.
   function clientValidate() {
     if (!form.name.trim()) return "Name is required.";
     if (form.age === "" || Number.isNaN(Number(form.age)))
@@ -61,7 +53,6 @@ export default function UserFormModal({ user, onClose, onSubmit }) {
         email: form.email.trim(),
         avatarUrl: form.avatarUrl.trim(),
       });
-      // onSubmit closes the modal on success.
     } catch (err) {
       setError(err.message);
     } finally {

@@ -1,9 +1,3 @@
-// src/seed.js
-// Populates the database with mock users so the table + pagination
-// have something to show. Safe to run multiple times: it clears first.
-//
-// Run with:  npm run seed
-
 import db from "./db.js";
 
 const firstNames = [
@@ -36,13 +30,10 @@ const insert = db.prepare(
   "INSERT INTO users (name, age, email, avatarUrl) VALUES (?, ?, ?, ?)"
 );
 
-// node:sqlite has no transaction() helper, so we use explicit
-// BEGIN / COMMIT (with ROLLBACK on error) to insert atomically.
 const users = buildUsers();
 db.exec("BEGIN");
 try {
   db.prepare("DELETE FROM users").run();
-  // Reset the auto-increment counter so ids start at 1 again.
   db.prepare("DELETE FROM sqlite_sequence WHERE name = 'users'").run();
   for (const u of users) {
     insert.run(u.name, u.age, u.email, u.avatarUrl);
